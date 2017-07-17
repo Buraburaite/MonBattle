@@ -4,7 +4,7 @@ export class Combat {
     return 1;
   }
 
-  constructor(user, targets, options) {
+  constructor(user, targets, opt) {
     this.user = user;
     if (typeof targets === Mon) {
       this.targets = [targets];
@@ -27,10 +27,10 @@ export class Combat {
         ) +
         2
       ) *
-      (1.5 * u.types.includes(type)) * // STAB modifier
-      eff(type, t.types)
+      u.stab(type) *     // STAB modifier
+      eff(type, t.types) // type effectiveness modifier
     });
+    return this;
   }
 
-  return this;
 }
