@@ -1,16 +1,13 @@
 export class Combat {
 
   static eff = (atkType, defTypes) => {
+    defTypes = (typeof defTypes === Array) ? defTypes : [defTypes];
     return 1;
   }
 
   constructor(user, targets, opt) {
     this.user = user;
-    if (typeof targets === Mon) {
-      this.targets = [targets];
-    } else {
-      this.targets = targets;
-    }
+    targets = (typeof targets === Array) ? targets : [targets];
   }
 
   damage = (stat, type, power) => {
@@ -21,8 +18,8 @@ export class Combat {
         (
           ((2 * u.lvl / 5) + 2) *
           power *
-          (stat === 'Physical' ? u.atk | u.sAtk) /
-          (stat === 'Physical' ? t.def | u.sDef) /
+          (stat === 'Physical' ? u.atk : u.sAtk) /
+          (stat === 'Physical' ? t.def : u.sDef) /
           50
         ) +
         2

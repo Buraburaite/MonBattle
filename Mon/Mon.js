@@ -20,6 +20,4 @@ export class Mon {
   get sAtk() { return this.stats.sAtk; }
   get sDef() { return this.stats.sDef; }
 
-
-
 }
