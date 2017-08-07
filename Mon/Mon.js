@@ -2,10 +2,9 @@ const Stats = require('./Stats.js');
 
 export class Mon {
 
-  constructor(num, lvl, moves, opt) {
+  constructor(num, lvl, opt) {
     this.num = num;
     this.lvl = lvl;
-    this.moves = moves;
     if (opt.catchable) { this.catchable = true; }
     if (opt.nickname)  { this.nickname  = opt.nickname; }
 
