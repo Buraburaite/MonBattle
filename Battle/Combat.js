@@ -1,13 +1,15 @@
 export class Combat {
 
+  static assertList = (x) => (typeof x === Array) ? x : [x];
+
   static eff = (atkType, defTypes) => {
-    defTypes = (typeof defTypes === Array) ? defTypes : [defTypes];
+    defTypes = Combat.assertList(defTypes);
     return 1;
   }
 
   constructor(user, targets, opt) {
     this.user = user;
-    targets = (typeof targets === Array) ? targets : [targets];
+    targets = Combat.assertList(targets);
   }
 
   damage = (stat, type, power) => {
@@ -25,7 +27,7 @@ export class Combat {
         2
       ) *
       u.stab(type) *     // STAB modifier
-      eff(type, t.types) // type effectiveness modifier
+      Combat.eff(type, t.types) // type effectiveness modifier
     });
     return this;
   }
