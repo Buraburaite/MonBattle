@@ -1,4 +1,4 @@
-module.exports = (num) => {
+module.exports = num => {
   switch(num) {
     case 'D-366B':
     return {

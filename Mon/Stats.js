@@ -4,8 +4,27 @@ module.exports = class Stats {
 
     this.lvl = lvl;
 
-    const calcStat = (baseStat, lvl) => Math.floor((2 * baseStat * lvl) / 100) + 5;
-    this.maxHP = Math.floor(((2 * base.baseAtk * lvl) / 100 ) + lvl + 10);
+    const calcStat = (baseStat, lvl) => {
+      return Math.round(
+        (
+          Math.floor(
+            (
+              2 * baseStat * lvl
+            ) / 100
+          ) + 5
+        ) / 10
+      );
+    };
+    this.maxHP = Math.round(
+      Math.floor(
+        (
+          (
+            2 * base.baseAtk * lvl
+          ) / 100
+        ) + lvl + 10
+      ) / 10
+    );
+    this.HP    = this.maxHP;
     this.vAtk  = calcStat(base.baseAtk, lvl); // vanilla Atk
     this.vSAtk = calcStat(base.baseSAtk, lvl);
     this.vSpd  = calcStat(base.baseSpd, lvl);

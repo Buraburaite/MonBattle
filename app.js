@@ -2,8 +2,8 @@ const Battle = require('./Battle/Battle.js');
 const Mon    = require('./Mon/Mon.js');
 const Player = require('./Player/Player.js');
 
-const guilmon = new Mon('D-366B', 25);
-const vulpix = new Mon('P-396A', 25);
+const guilmon = new Mon('D-366B', 25, 'Javimon');
+const vulpix = new Mon('P-396A', 25, 'Durkeemon');
 
 const javi = {
   name: 'Javimon',

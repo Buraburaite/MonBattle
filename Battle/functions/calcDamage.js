@@ -9,18 +9,19 @@ module.exports = (a, d, move) => {
     def = b.sDef;
   }
 
-  const mod = a.types.includes(type) ? 1.5 : 1;
+  const stab = a.types.includes(move.type) ? 1.5 : 1;
 
-  return Math.max(
+  return Math.min(
     (
       (
         (
           (
-            (2 * a.lvl) / 5) + 2
-          ) * move.power * atk/def
-        ) / 50
-      ) + 2 * mod,
-    0
+            (2 * a.lvl) / 5
+          ) + 2
+        ) * move.power * atk/def
+      ) / 50
+    ) + 2 * stab,
+    b.HP
   );
 
 };
