@@ -1,6 +1,6 @@
-export class Party {
+module.exports = class Party {
 
   constructor() {
 
   }
-}
+};
