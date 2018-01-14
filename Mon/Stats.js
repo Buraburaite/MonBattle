@@ -1,14 +1,10 @@
-const parser = require('papaparse');
+const getBaseInfo = require('../Battle/functions/getBaseInfo.js');
 
 module.exports = class Stats {
 
-  constructor(num, lvl) {
+  constructor(base, lvl) {
 
-    this.base = {
-      // atk:
-    };
-
-    this.maxHP = 20;
+    this.maxHP = Math.floor(((2 * base.baseAtk * lvl) / 100 ) + lvl + 10);
     this.vAtk = 5; // vanilla Atk
     this.vSAtk = 5;
     this.vSpd = 5;
