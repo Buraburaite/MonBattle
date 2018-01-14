@@ -6,6 +6,8 @@ module.exports = class Battle {
       []
     );
 
+    this.actions = [];
+
     console.log(this.mons);
   }
 };

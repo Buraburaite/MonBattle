@@ -24,9 +24,7 @@ module.exports = class Stats {
 
   productOf(stat, mods) {
     return this.mods.reduce(
-      (product, mod) => {
-        return product * mod.value;
-      },
+      (product, mod) => product * mod.value,
       stat
     );
   }

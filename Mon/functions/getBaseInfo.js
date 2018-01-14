@@ -1,11 +1,12 @@
 module.exports = (num) => {
   switch(num) {
-    case 'D-366A':
+    case 'D-366B':
     return {
       name: 'Guilmon',
-      num: 'D-366A',
+      num: 'D-366B',
       rank: 'R',
       types: ['FR', 'DG'],
+      moves: ['Pyro Sphere', 'Growl'],
       baseHP: 45,
       baseAtk: 83,
       baseSAtk: 83,
@@ -19,6 +20,7 @@ module.exports = (num) => {
       num: 'P-396A',
       rank: 'R',
       types: ['FR'],
+      moves: ['Will-o-Wisp', 'Hex'],
       baseHP: 38,
       baseAtk: 41,
       baseSAtk: 50,
