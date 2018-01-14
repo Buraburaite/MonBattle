@@ -1,15 +1,16 @@
-const getBaseInfo = require('../Battle/functions/getBaseInfo.js');
-
 module.exports = class Stats {
 
   constructor(base, lvl) {
 
+    this.lvl = lvl;
+
+    const calcStat = (baseStat, lvl) => Math.floor((2 * baseStat * lvl) / 100) + 5;
     this.maxHP = Math.floor(((2 * base.baseAtk * lvl) / 100 ) + lvl + 10);
-    this.vAtk = 5; // vanilla Atk
-    this.vSAtk = 5;
-    this.vSpd = 5;
-    this.vSDef = 5;
-    this.vDef = 5;
+    this.vAtk  = calcStat(base.baseAtk, lvl); // vanilla Atk
+    this.vSAtk = calcStat(base.baseSAtk, lvl);
+    this.vSpd  = calcStat(base.baseSpd, lvl);
+    this.vSDef = calcStat(base.baseSDef, lvl);
+    this.vDef  = calcStat(base.baseDef, lvl);
 
     this.atkMods = [{
       name: 'hacks',
