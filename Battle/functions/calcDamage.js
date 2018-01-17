@@ -1,15 +1,15 @@
-module.exports = (a, d, move) => {
+module.exports = (a, d, moveInfo) => {
 
   let atk, def;
-  if (move.kind === 'Physical') {
+  if (moveInfo.kind === 'Physical') {
     atk = a.atk;
-    def = b.def;
-  } else if (move.kind === 'Special') {
+    def = d.def;
+  } else if (moveInfo.kind === 'Special') {
     atk = a.sAtk;
-    def = b.sDef;
+    def = d.sDef;
   }
 
-  const stab = a.types.includes(move.type) ? 1.5 : 1;
+  const stab = a.types.includes(moveInfo.type) ? 1.5 : 1;
 
   return Math.min(
     (
@@ -18,10 +18,10 @@ module.exports = (a, d, move) => {
           (
             (2 * a.lvl) / 5
           ) + 2
-        ) * move.power * atk/def
+        ) * moveInfo.power * atk/def
       ) / 50
     ) + 2 * stab,
-    b.HP
+    d.HP
   );
 
 };

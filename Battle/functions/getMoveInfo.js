@@ -6,6 +6,7 @@ module.exports = (name) => {
       kind: 'Special',
       type: 'FR',
       power: 8,
+      priority: 0,
       after: (a, d, damageDealt) => {
         a.health -= Math.round(damageDealt / 3);
       }

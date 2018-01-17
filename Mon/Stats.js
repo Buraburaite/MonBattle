@@ -37,20 +37,20 @@ module.exports = class Stats {
     }];
     this.sAtkMods = [];
     this.spdMods = [];
-    this.sDefMons = [];
+    this.sDefMods = [];
     this.defMods = [];
   }
 
   productOf(stat, mods) {
-    return this.mods.reduce(
+    return mods.reduce(
       (product, mod) => product * mod.value,
       stat
     );
   }
 
-  get atk()  { return this.productOf(this.atk,  this.atkMods);  }
-  get sAtk() { return this.productOf(this.sAtk, this.sAtkMods); }
-  get spd()  { return this.productOf(this.spd,  this.spdMods);  }
-  get sDef() { return this.productOf(this.sDef, this.sDefMods); }
-  get def()  { return this.productOf(this.def,  this.defMods);  }
+  get atk()  { return this.productOf(this.vAtk,  this.atkMods);  }
+  get sAtk() { return this.productOf(this.vSAtk, this.sAtkMods); }
+  get spd()  { return this.productOf(this.vSpd,  this.spdMods);  }
+  get sDef() { return this.productOf(this.vSDef, this.sDefMods); }
+  get def()  { return this.productOf(this.vDef,  this.defMods);  }
 };

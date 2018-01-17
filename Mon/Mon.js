@@ -19,8 +19,8 @@ class Mon {
     this._stats = new Stats(this._base, lvl);
   }
 
-  get moves() { return this.base.moves; }
-  get types() { return this.base.types; }
+  get moves() { return this._base.moves; }
+  get types() { return this._base.types; }
   get HP()    { return this._stats.HP; }
   set HP(newHP) { this._stats.HP = newHP; }
   get atk()   { return this._stats.atk; }

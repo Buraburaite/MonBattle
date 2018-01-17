@@ -9,12 +9,16 @@ module.exports = class Battle {
       party.forEach(mon => this.mons.push(mon));
     });
 
+    const guilmon = this.mons[0];
+    const vulpix  = this.mons[1];
+
     this.actions = [];
 
-    console.log(this.mons);
     while (!decideWinner(this.mons)) {
-      this.mons[0].HP--;
+      this.actions.push(moveToAction(guilmon, vulpix, guilmon.moves[0]));
 
+      this.actions[0]();
+      this.actions = [];
     }
   }
 
