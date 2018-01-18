@@ -25,7 +25,9 @@ module.exports = (battle) => {
   }
 
   // advance phase if done
+  let result;
   if (poss.length === 0) {
+    result = null;
     switch(phase) {
       case 'start':
       battle._phase = 'prep';
@@ -35,12 +37,14 @@ module.exports = (battle) => {
       break;
       case 'end':
       battle._phase = 'start';
+      battle._turnCount++;
       break;
     }
   }
   // otherwise, do the action and check removal condition
   else {
-    poss[0]();
-    if (poss.remove()) { actions.shift(); }
+    result = poss[0];
+    if (result.remove()) { actions.shift(); }
   }
+  return result;
 };
