@@ -1,5 +1,6 @@
-const moveToAction = require('./functions/moveToAction.js');
+const moveToAction = require('./functions/move.toAction.js');
 const decideWinner = require('./functions/decideWinner.js');
+const findNext = require('./functions/findNext.js');
 
 module.exports = class Battle {
   constructor(parties) {
@@ -12,13 +13,14 @@ module.exports = class Battle {
     const guilmon = this.mons[0];
     const vulpix  = this.mons[1];
 
-    this.actions = [];
+    this._actions = [];
+    this._nextActionID = 0;
 
     while (!decideWinner(this.mons)) {
-      this.actions.push(moveToAction(guilmon, vulpix, guilmon.moves[0]));
+      this._actions.push(moveToAction(guilmon, vulpix, guilmon.moves[0]));
 
-      this.actions[0]();
-      this.actions = [];
+      let doAction = findNext(this, 'start');
+      this._actions = [];
     }
   }
 

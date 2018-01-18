@@ -10,9 +10,9 @@ module.exports = (a, d, move) => {
     console.log('did: ' + move);
   };
 
-  action.type = 'Move';
-  action.name = moveInfo.name;
+  action.phase = 'battle';
   action.priority = moveInfo.priority;
+  action.remove = () => true;
 
   Object.defineProperty(action, 'spd', {
     get: () => a.spd
