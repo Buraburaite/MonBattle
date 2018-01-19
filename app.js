@@ -15,3 +15,14 @@ const durkee = {
 };
 
 const bat = new Battle([javi.party, durkee.party]);
+
+/*====
+bat.onPrep(() => {
+// select moves
+bat.addAction(moveToAction(guilmon, vulpix, guilmon.moves[0]));
+bat.addAction(moveToAction(vulpix, guilmon, vulpix.moves[0]));
+
+// end Prep phase
+bat.ready();
+});
+====*/

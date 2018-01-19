@@ -33,5 +33,6 @@ module.exports = class Battle {
     }
   }
 
+  get turn() { return this._turnCount; }
   get liveMons() { return this.mons.filter(mon => mon.HP > 0); }
 };
