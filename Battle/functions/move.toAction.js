@@ -1,7 +1,7 @@
 const calcDamage = require('./calcDamage.js');
 const getMoveInfo = require('./getMoveInfo.js');
 
-module.exports = (a, d, move) => {
+module.exports = (a, d, move, id) => {
 
   moveInfo = getMoveInfo(move);
 
@@ -10,6 +10,7 @@ module.exports = (a, d, move) => {
     console.log('did: ' + move);
   };
 
+  action.id = id;
   action.phase = 'battle';
   action.priority = moveInfo.priority;
   action.remove = () => true;

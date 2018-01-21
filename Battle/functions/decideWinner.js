@@ -9,5 +9,7 @@ module.exports = mons => {
     }
   }
 
-  return liveMons[0].player;
+  const victor = liveMons[0].player;
+  console.log(victor);
+  return victor;
 };

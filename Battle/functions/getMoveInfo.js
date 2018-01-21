@@ -16,6 +16,16 @@ module.exports = (name) => {
     case 'Will-o-Wisp':
     return;
     case 'Hex':
-    return;
+    return {
+      name: 'Hex',
+      kind: 'Special',
+      type: 'GH',
+      power: 6,
+      priority: 0,
+      before: (a, d) => {
+        if (d.isStatused()) { power *= 2; }
+      },
+      after: () => power = 6
+    };
   }
 };
