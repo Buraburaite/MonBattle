@@ -1,4 +1,4 @@
-module.exports = (battle) => {
+const triggerNext = (battle) => {
 
   // First, limit search to actions in the current phase...
   const phase   = battle._phase;
@@ -37,6 +37,11 @@ module.exports = (battle) => {
   const next = actions[0];
   // ...remove it from the action pool depending on its removal condition...
   if (next.remove()) { battle._actions = battle._actions.filter(a => a.id !== next.id); }
-  // ...then return the first action.
-  return actions[0];
+  // ...then trigger the first action...
+  actions[0]();
+
+  // ...finally, recurse.
+  triggerNext(battle);
 };
+
+module.exports = triggerNext;
