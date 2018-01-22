@@ -3,13 +3,12 @@ const getMoveInfo = require('./getMoveInfo.js');
 
 module.exports = (a, d, moveIndex) => {
 
-  moveInfo = getMoveInfo(a.moves[moveIndex]);
-
+  const moveInfo = getMoveInfo(a.moves[moveIndex]);
 
   action = () => {
-    d.HP -= calcDamage(a, d, moveInfo);
-    console.log('did: ' + moveInfo.name);
-    console.log(this.id);
+    const damage = calcDamage(a, d, moveInfo);
+    d.HP -= damage;
+    console.log(`${a.name} used ${moveInfo.name} on ${d.name}, damage: ${damage}`);
   };
 
   action.phase = 'battle';

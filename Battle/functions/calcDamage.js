@@ -11,17 +11,19 @@ module.exports = (a, d, moveInfo) => {
 
   const stab = a.types.includes(moveInfo.type) ? 1.5 : 1;
 
-  return Math.min(
-    (
+  return Math.round(
+    Math.min(
       (
         (
           (
-            (2 * a.lvl) / 5
-          ) + 2
-        ) * moveInfo.power * atk/def
-      ) / 50
-    ) + 2 * stab,
-    d.HP
+            (
+              (2 * a.lvl) / 5
+            ) + 2
+          ) * moveInfo.power * atk/def
+        ) / 50
+      ) + 2 * stab,
+      d.HP
+    )
   );
 
 };
