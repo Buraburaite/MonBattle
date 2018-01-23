@@ -3,7 +3,12 @@ const decideWinner = require('./decideWinner.js');
 module.exports = (battle) => {
 
   const endEnd = () => {
-    battle.victor = decideWinner(battle.mons);
+    const victor = decideWinner(battle.mons);
+    if (victor) {
+      battle.trigger('battleEnd', victor);
+      return null;
+    } // TODO: have this trigger battleEnd event
+
     battle._turnCount++;
     battle._phase = 'start';
   };

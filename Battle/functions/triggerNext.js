@@ -5,8 +5,8 @@ const triggerNext = (battle) => {
   const actions = battle._actions.filter(a => a.phase === phase);
   console.log(`=== Current phase: ${phase} ===`);
 
-  // ...escape if we're in the prep phase (no actions can be associated with prep)...
-  if (phase === 'prep') { return null; }
+  // ...escape if we're in the prep phase or if the winner has been decided...
+  if (phase === 'prep' || battle.victor) { return null; }
 
   // ...otherwise, sort the actions...
   let sortFunction;

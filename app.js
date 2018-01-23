@@ -1,7 +1,6 @@
 const Battle = require('./Battle/Battle.js');
 const Mon    = require('./Mon/Mon.js');
-const Player = require('./Player/Player.js');
-const move = require('./Battle/functions/move.toAction.js');
+const move   = require('./Battle/functions/move.toAction.js');
 
 const guilmon = new Mon('D-366B', 25, 'Javimon');
 const vulpix = new Mon('P-396A', 25, 'Durkeemon');
@@ -15,12 +14,12 @@ const durkee = {
   party: [vulpix]
 };
 
-const bat = new Battle([javi.party, durkee.party]);
+const battle = new Battle([javi.party, durkee.party]);
 
-while (!bat.victor) {
-  console.log(bat.turn);
-  bat.addAction(move(guilmon, vulpix, 0));
-  bat.addAction(move(vulpix, guilmon, 1));
-  bat.ready();
+while (!battle.victor) {
+  console.log('Turn: ' + battle.turn);
+  battle.addAction(move(guilmon, vulpix, 0)); // params: attacker, defender, move index (i.e. which mov)
+  battle.addAction(move(vulpix, guilmon, 1));
+  battle.ready();
 }
-console.log(bat.victor);
+console.log('Winner is ' + battle.victor);
