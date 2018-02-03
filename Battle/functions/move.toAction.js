@@ -1,14 +1,14 @@
 const calcDamage = require('./calcDamage.js');
 const getMoveInfo = require('./getMoveInfo.js');
 
-module.exports = (a, d, moveIndex) => {
+module.exports = (battle, user, target, moveIndex) => {
 
-  const moveInfo = getMoveInfo(a.moves[moveIndex]);
+  const moveInfo = getMoveInfo(user.moves[moveIndex]);
 
   action = () => {
-    const damage = calcDamage(a, d, moveInfo);
-    d.HP -= damage;
-    console.log(`${a.name} used ${moveInfo.name} on ${d.name}, damage: ${damage}`);
+    const damage = calcDamage(user, target, moveInfo);
+    target.HP -= damage;
+    battle.emit('damageDealt', user, target, damage);
   };
 
   action.phase = 'battle';
@@ -16,7 +16,7 @@ module.exports = (a, d, moveIndex) => {
   action.remove = () => true;
 
   Object.defineProperty(action, 'spd', {
-    get: () => a.spd
+    get: () => user.spd
   });
 
   return action;

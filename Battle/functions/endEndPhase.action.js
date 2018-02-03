@@ -5,9 +5,10 @@ module.exports = (battle) => {
   const endEnd = () => {
     const victor = decideWinner(battle.mons);
     if (victor) {
-      battle.trigger('battleEnd', victor);
+      battle.emit('battleEnd', victor);
+      battle._paused = true;
       return null;
-    } // TODO: have this trigger battleEnd event
+    }
 
     battle._turnCount++;
     battle._phase = 'start';

@@ -16,10 +16,26 @@ const durkee = {
 
 const battle = new Battle([javi.party, durkee.party]);
 
-while (!battle.victor) {
-  console.log('Turn: ' + battle.turn);
-  battle.addAction(move(guilmon, vulpix, 0)); // params: attacker, defender, move index (i.e. which mov)
-  battle.addAction(move(vulpix, guilmon, 1));
+battle.on('battleStart', () => {
+  console.log('(BATTLESTART)');
+});
+battle.on('prepPhaseStart', () => {
+  console.log('(PREPPHASESTART)');
+  battle.addAction(move(battle, guilmon, vulpix, 0)); // params: attacker, defender, move index (i.e. which mov)
+  battle.addAction(move(battle, vulpix, guilmon, 1));
   battle.ready();
-}
-console.log('Winner is ' + battle.victor);
+});
+battle.on('ready', () => {
+  console.log('(READY)');
+});
+battle.on('damageDealt', (user, target, damageDealt) => {
+  console.log(`${user.name} did ${damageDealt} damage to ${target.name}`);
+});
+battle.on('endPhaseStart', () => {
+  console.log('(ENDPHASESTART)');
+});
+battle.on('battleEnd', (victor) => {
+  console.log(`${victor} has won the battle`);
+});
+
+battle.start();

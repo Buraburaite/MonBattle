@@ -2,6 +2,7 @@ module.exports = (battle) => {
 
   const endStart = () => {
     battle._phase = 'prep';
+    battle.emit('prepPhaseStart');
   };
 
   endStart.name = 'end start phase';
