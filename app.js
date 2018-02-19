@@ -1,6 +1,6 @@
 const Battle = require('./Battle/Battle.js');
 const Mon    = require('./Mon/Mon.js');
-const move   = require('./Battle/functions/move.toAction.js');
+const move   = require('./Battle/formats/qaion/Move/Move.js');
 
 const guilmon = new Mon('D-366B', 25, 'Javimon');
 const vulpix = new Mon('P-396A', 25, 'Durkeemon');
@@ -14,10 +14,10 @@ const durkee = {
   party: [vulpix]
 };
 
-const battle = new Battle([javi.party, durkee.party]);
+const battle = new Battle('qaion', [javi.party, durkee.party]);
 
-battle.on('battleStart', () => {
-  console.log('(BATTLESTART)');
+battle.on('Battle_Start', () => {
+  console.log('(Battle_Start)');
 });
 battle.on('prepPhaseStart', () => {
   console.log('(PREPPHASESTART)');
@@ -25,8 +25,8 @@ battle.on('prepPhaseStart', () => {
   battle.addAction(move(battle, vulpix, guilmon, 1));
   battle.ready();
 });
-battle.on('ready', () => {
-  console.log('(READY)');
+battle.on('Unpaused', () => {
+  console.log('(Unpaused)');
 });
 battle.on('damageDealt', (user, target, damageDealt) => {
   console.log(`${user.name} did ${damageDealt} damage to ${target.name}`);

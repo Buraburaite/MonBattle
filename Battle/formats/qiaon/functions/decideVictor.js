@@ -5,7 +5,6 @@ module.exports = mons => {
       return null;
     }
   }
-
-  const victor = liveMons[0].player;
-  return victor;
+  
+  return liveMons[0].player;
 };

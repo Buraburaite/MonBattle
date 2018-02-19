@@ -1,12 +1,13 @@
 const triggerNext = (battle) => {
 
-  // First, limit search to actions in the current phase...
+  // First, scape if the the battle is paused...
+  if (battle._paused) { return null; }
+
+  // If not, then start by limiting our search to actions in the current phase...
   const phase   = battle._phase;
   const actions = battle._actions.filter(a => a.phase === phase);
-  // console.log(`=== Current phase: ${phase} ===`);
 
-  // ...escape if we're in the prep phase or if the winner has been decided...
-  if (battle._paused) { return null; }
+
 
   // ...otherwise, sort the actions...
   let sortFunction;
