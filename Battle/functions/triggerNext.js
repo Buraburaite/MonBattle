@@ -10,7 +10,7 @@ const triggerNext = (battle) => {
 
   // ...otherwise, sort the actions...
   let sortFunction;
-  if (phase === 'battle') {
+  if (phase === 'move') {
     sortFunction = (a,b) => {
       if (a.priority !== b.priority) { return b.priority - a.priority; }
       return b.spd - a.spd;

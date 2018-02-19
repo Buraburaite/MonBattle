@@ -11,7 +11,7 @@ module.exports = (battle, user, target, moveIndex) => {
     battle.emit('damageDealt', user, target, damage);
   };
 
-  action.phase = 'battle';
+  action.phase = 'move';
   action.priority = moveInfo.priority;
   action.remove = () => true;
 

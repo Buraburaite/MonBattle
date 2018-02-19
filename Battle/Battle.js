@@ -2,7 +2,7 @@ const ee = require('event-emitter');
 const moveToAction = require('./functions/move.toAction.js');
 const triggerNext  = require('./functions/triggerNext.js');
 const endStartPhase   = require('./functions/endStartPhase.action.js');
-const endBattlePhase  = require('./functions/endBattlePhase.action.js');
+const endMovePhase  = require('./functions/endMovePhase.action.js');
 const endEndPhase     = require('./functions/endEndPhase.action.js');
 
 class Battle {
@@ -20,7 +20,7 @@ class Battle {
     this._paused = false;
 
     this.addAction(endStartPhase(this));
-    this.addAction(endBattlePhase(this));
+    this.addAction(endMovePhase(this));
     this.addAction(endEndPhase(this));
   }
 
@@ -32,7 +32,7 @@ class Battle {
   }
 
   ready() {
-    this._phase = 'battle';
+    this._phase = 'move';
     this.emit('ready');
     this._paused = false;
     triggerNext(this);
