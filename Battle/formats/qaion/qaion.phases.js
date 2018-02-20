@@ -11,6 +11,11 @@ const endEnd = (battle) => {
   battle._incrementTurn();
 };
 
+const compareMovePriority = (a,b) => {
+  if (a.priority !== b.priority) { return b.priority - a.priority; }
+  return b.user.spd - a.user.spd;
+};
+
 
 const phases = [
   {
@@ -21,7 +26,8 @@ const phases = [
     pause: true
   },
   {
-    name: 'Move'
+    name: 'Move',
+    priorityFunc: compareMovePriority
   },
   {
     name: 'End',

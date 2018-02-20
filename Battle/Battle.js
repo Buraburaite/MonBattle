@@ -1,4 +1,4 @@
-const triggerNext  = require('./functions/triggerNext.js');
+const triggerNextFactory = require('./factories/triggerNext.js');
 
 class Battle {
   constructor(format, parties) {
@@ -10,10 +10,11 @@ class Battle {
       party.forEach(mon => this.mons.push(mon));
     });
 
-    this._phases = require(`./formats/${format}.phases.js`);
+    this._phases = require(`./formats/${format}/${format}.phases.js`);
     this._phase = this._phases[0];
     this._turn = 0;
 
+    this._triggerNext = triggerNextFactory(this);
     this._paused = false;
     this._actions = [];
     this._listeners = [];
@@ -40,7 +41,7 @@ class Battle {
   unpause() {
     this.emit('Unpaused');
     this._paused = false;
-    triggerNext(this);
+    this._triggerNext();
   }
 
   start() {
