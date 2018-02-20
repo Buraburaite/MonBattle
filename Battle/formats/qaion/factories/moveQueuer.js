@@ -15,6 +15,7 @@ const moveQueuerFactory = (battle, user) => {
       const damage = calcDamage(user, target, moveInfo);
       target.HP -= damage;
       battle.emit('Damage_Dealt', user, target, damage);
+      if (target.HP <= 0) { battle.emit('Mon_Fainted', target); }
     };
 
     action.isMove = true;
