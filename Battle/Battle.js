@@ -26,6 +26,8 @@ class Battle {
     this._listeners = [];
     this._nextActionID = 0;
     this._nextListenerID = 0;
+
+    this.emit('Battle_Start');
   }
 
   get turn() { return this._turn; }
@@ -44,6 +46,11 @@ class Battle {
     this._listeners.push(listener);
   }
 
+  get paused() { return this._paused; }
+  pause() {
+    this.emit('Paused');
+    this._paused = true;
+  }
   unpause() {
     this.emit('Unpaused');
     this._paused = false;
@@ -55,6 +62,7 @@ class Battle {
 
     this._incrementTurn();
     this.emit('Battle_Start');
+    this.emit(`${this.phase.name}_Phase_Start`);
     this._triggerNext();
   }
 

@@ -3,8 +3,8 @@ const decideVictor = require('./qaion.wincon.js');
 const endEnd = (battle) => {
   const victor = decideVictor(battle.mons);
   if (victor) {
-    battle.emit('battleEnd', victor);
-    battle._paused = true;
+    battle.emit('Battle_End', victor);
+    battle.pause();
     return null;
   }
 
@@ -31,7 +31,7 @@ const phases = [
   },
   {
     name: 'End',
-    end: endEnd
+    endFunc: endEnd
   }
 ];
 
