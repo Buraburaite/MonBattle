@@ -22,9 +22,9 @@ const triggerNextFactory = (battle) => {
     }
 
     // ...otherwise, sort the actions...
-    if (phase.priorityFunc) { actions.sort(phase.priority); }
+    if (phase.priorityFunc) { actions.sort(phase.priorityFunc); }
     else                    { actions.sort((a,b) => b.priority - a.priority); }
-    
+
     // ...select the next action...
     const next = actions[0];
     // ...remove it from the action pool depending on its removal condition...

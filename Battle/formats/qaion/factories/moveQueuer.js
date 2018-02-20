@@ -18,6 +18,8 @@ const moveQueuerFactory = (battle, user) => {
     };
 
     action.isMove = true;
+    action.user = user;
+    action.target = target;
     action.phase = 'Move';
     action.priority = moveInfo.priority;
     action.remove = () => true;

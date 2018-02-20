@@ -12,8 +12,8 @@ const endEnd = (battle) => {
 };
 
 const comparePriorityInMovePhase = (a,b) => {
-  if (a.priority !== b.priority) { return b.priority - a.priority; }
-  return b.user.spd - a.user.spd;
+  if (a.priority === b.priority) { return b.user.spd - a.user.spd; }
+  else                           { return b.priority - a.priority; }
 };
 
 
