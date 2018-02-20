@@ -6,11 +6,12 @@ class Battle {
     this.parties = parties;
     this.victor = null;
 
-    const moveFactory = require(`./formats/${format}/${format}.move.js`);
+    const moveQueuerFactory = require(`./formats/${format}/factories/moveQueuer.js`);
     this.mons = [];
+    let thisBattle = this;
     parties.forEach(party => {
       party.forEach(mon => {
-        mon.use = moveFactory(this, mon);
+        mon.use = moveQueuerFactory(thisBattle, mon);
         this.mons.push(mon);
       });
     });

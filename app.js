@@ -18,11 +18,11 @@ const battle = new Battle('qaion', [javi.party, durkee.party]);
 battle.on('Battle_Start', () => {
   console.log('(Battle_Start)');
 });
-battle.on('prepPhaseStart', () => {
-  console.log('(PREPPHASESTART)');
+battle.on('Prep_Phase_Start', () => {
+  console.log('(Prep_Phase_Start)');
   guilmon.use(0, vulpix); // params: moveIndex, target (later target will be a fieldIndex)
   vulpix.use(1, guilmon);
-  battle.ready();
+  battle.unpause();
 });
 battle.on('Unpaused', () => {
   console.log('(Unpaused)');

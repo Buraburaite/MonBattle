@@ -9,14 +9,23 @@ const triggerNextFactory = (battle) => {
     if (battle._paused) { return null; }
 
     // If not, then start by limiting our search to actions in the current phase...
-    const phase   = battle._phase;
-    const actions = battle._actions.filter(a => a.phase === phase);
+    let phase   = battle._phase;
+    const forActionsInTheCurrentPhase = a => a.phase === phase;
+    let actions = battle._actions.filter(forActionsInTheCurrentPhase);
+
+    // ...while there are no actions to call in the phase, move to the next phase...
+    while (actions.length === 0) {
+      phase = phase.next;
+      battle._phase = phase;
+      battle.emit(`${phase.name}_Phase_Start`);
+      actions = battle._actions.filter(forActionsInTheCurrentPhase);
+    }
 
     // ...otherwise, sort the actions...
     if (phase.priorityFunc) { actions.sort(phase.priority); }
     else                    { actions.sort((a,b) => b.priority - a.priority); }
 
-    console.log(actions[0]);
+    console.log(actions[0], battle._actions);
     // ...select the next action...
     const next = actions[0];
     // ...remove it from the action pool depending on its removal condition...
