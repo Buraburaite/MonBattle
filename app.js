@@ -1,6 +1,5 @@
 const Battle = require('./Battle/Battle.js');
 const Mon    = require('./Mon/Mon.js');
-const Move   = require('./Battle/formats/qaion/Move/Move.js');
 
 const guilmon = new Mon('D-366B', 25, 'Javimon');
 const vulpix = new Mon('P-396A', 25, 'Durkeemon');
@@ -21,8 +20,8 @@ battle.on('Battle_Start', () => {
 });
 battle.on('prepPhaseStart', () => {
   console.log('(PREPPHASESTART)');
-  battle.addAction(new Move(battle, guilmon, vulpix, 0)); // params: attacker, defender, move index (i.e. which mov)
-  battle.addAction(new Move(battle, vulpix, guilmon, 1));
+  guilmon.use(0, vulpix); // params: moveIndex, target (later target will be a fieldIndex)
+  vulpix.use(1, guilmon);
   battle.ready();
 });
 battle.on('Unpaused', () => {

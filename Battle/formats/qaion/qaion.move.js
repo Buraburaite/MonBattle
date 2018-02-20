@@ -1,9 +1,10 @@
-const calcDamage = require('../functions/calcDamage.js');
-const getMoveInfo = require('./getMoveInfo.js');
+const getMoveInfo = require('./functions/getMoveInfo.js');
 
-class Move {
+const calcDamage = require('./functions/calcDamage.js');
 
-  constructor(battle, user, target, moveIndex) {
+const moveFactory = (battle, user) => {
+
+  const move = (moveIndex, target) => {
 
     this.isMove = true;
     this.user = user;
@@ -25,7 +26,9 @@ class Move {
     });
 
     this.call = action; // turns this instance into an action
-  }
-}
+  };
 
-module.exports = Move;
+  return move;
+};
+
+module.exports = moveFactory;

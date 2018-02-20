@@ -1,4 +1,4 @@
-const decideVictor = require('../functions/decideVictor.js');
+const decideVictor = require('./qaion.wincon.js');
 
 const endEnd = (battle) => {
   const victor = decideVictor(battle.mons);
@@ -11,7 +11,7 @@ const endEnd = (battle) => {
   battle._incrementTurn();
 };
 
-const compareMovePriority = (a,b) => {
+const comparePriorityInMovePhase = (a,b) => {
   if (a.priority !== b.priority) { return b.priority - a.priority; }
   return b.user.spd - a.user.spd;
 };
@@ -27,7 +27,7 @@ const phases = [
   },
   {
     name: 'Move',
-    priorityFunc: compareMovePriority
+    priorityFunc: comparePriorityInMovePhase
   },
   {
     name: 'End',
@@ -35,7 +35,10 @@ const phases = [
   }
 ];
 
+// Turn phases into a singly linked list
 for (let i = 0; i < phases.length - 1; i++) {
   phases[i].next = phases[i + 1];
 }
 phases[phases.length - 1].next = phases[0];
+
+module.exports = phases;

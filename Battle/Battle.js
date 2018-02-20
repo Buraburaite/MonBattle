@@ -5,9 +5,14 @@ class Battle {
     this.format = format;
     this.parties = parties;
     this.victor = null;
+
+    const moveFactory = require(`./formats/${format}/${format}.move.js`);
     this.mons = [];
     parties.forEach(party => {
-      party.forEach(mon => this.mons.push(mon));
+      party.forEach(mon => {
+        mon.use = moveFactory(this, mon);
+        this.mons.push(mon);
+      });
     });
 
     this._phases = require(`./formats/${format}/${format}.phases.js`);
@@ -49,7 +54,7 @@ class Battle {
 
     this._incrementTurn();
     this.emit('Battle_Start');
-    triggerNext(this);
+    this._triggerNext();
   }
 
 
