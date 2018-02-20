@@ -1,4 +1,4 @@
-const getMoveInfo = require('../functions/getMoveInfo.js');
+const getMoveInfo = require('../pure-functions/getMoveInfo.js');
 
 const calcDamage = require('../functions/calcDamage.js');
 
