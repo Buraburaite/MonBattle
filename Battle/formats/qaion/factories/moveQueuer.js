@@ -9,13 +9,16 @@ const moveQueuerFactory = (battle, user) => {
     moveInfo = getMoveInfo(user.moves[moveIndex]);
 
     const action = () => {
+
+      if (user.HP <= 0) { return null; }
+
       const damage = calcDamage(user, target, moveInfo);
       target.HP -= damage;
       battle.emit('damageDealt', user, target, damage);
     };
 
     action.isMove = true;
-    action.phase = 'move';
+    action.phase = 'Move';
     action.priority = moveInfo.priority;
     action.remove = () => true;
 
