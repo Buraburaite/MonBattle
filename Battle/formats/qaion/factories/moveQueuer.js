@@ -12,6 +12,7 @@ const moveQueuerFactory = (battle, user) => {
 
       if (user.HP <= 0) { return null; }
 
+      // This next part needs to be turned into csv programmable magic
       const damage = calcDamage(user, target, moveInfo);
       target.HP -= damage;
       battle.emit('Damage_Dealt', user, target, damage);

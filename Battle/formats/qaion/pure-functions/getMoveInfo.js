@@ -3,13 +3,10 @@ module.exports = (name) => {
     case 'Pyro Sphere':
     return {
       name: 'Pyro Sphere',
-      kind: 'Special',
+      kind: 'special',
       type: 'FR',
       power: 8,
-      priority: 0,
-      after: (a, d, damageDealt) => {
-        a.health -= Math.round(damageDealt / 3);
-      }
+      priority: 0
     };
     case 'Growl':
     return;
@@ -18,14 +15,10 @@ module.exports = (name) => {
     case 'Hex':
     return {
       name: 'Hex',
-      kind: 'Special',
+      kind: 'special',
       type: 'GH',
       power: 6,
-      priority: 0,
-      before: (a, d) => {
-        if (d.isStatused()) { power *= 2; }
-      },
-      after: () => power = 6
+      priority: 0
     };
   }
 };

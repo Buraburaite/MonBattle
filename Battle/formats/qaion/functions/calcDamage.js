@@ -1,15 +1,17 @@
-module.exports = (a, d, moveInfo) => {
+module.exports = (cxt) => {
 
+  const user = cxt.user;
+  const target = cxt.target;
   let atk, def;
-  if (moveInfo.kind === 'Physical') {
-    atk = a.atk;
-    def = d.def;
-  } else if (moveInfo.kind === 'Special') {
-    atk = a.sAtk;
-    def = d.sDef;
+  if (cxt.kind === 'physical') {
+    atk = user.atk;
+    def = target.def;
+  } else if (cxt.kind === 'special') {
+    atk = user.sAtk;
+    def = target.sDef;
   }
 
-  const stab = a.types.includes(moveInfo.type) ? 1.5 : 1;
+  const stab = user.types.includes(cxt.type) ? 1.5 : 1;
 
   return Math.round(
     Math.min(
@@ -17,12 +19,12 @@ module.exports = (a, d, moveInfo) => {
         (
           (
             (
-              (2 * a.lvl) / 5
+              (2 * user.lvl) / 5
             ) + 2
-          ) * moveInfo.power * atk/def
+          ) * cxt.power * atk/def
         ) / 50
       ) + 2 * stab,
-      d.HP
+      target.HP
     )
   );
 
