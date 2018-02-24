@@ -24,15 +24,15 @@ battle.on('Battle_Start', () => {
 });
 battle.on('Prep_Phase_Start', () => {
   console.log('(Prep_Phase_Start)');
-  guilmon.use(0, vulpix); // params: moveIndex, target (eventually target will be a fieldIndex)
+  guilmon.use(1, vulpix); // params: moveIndex, target (eventually target will be a fieldIndex)
   vulpix.use(1, guilmon);
   battle.unpause();
 });
 battle.on('Unpaused', () => {
   console.log('(Unpaused)');
 });
-battle.on('Damage_Dealt', (user, target, damageDealt) => {
-  console.log(`(Damage_Dealt): ${user.name} did ${damageDealt} damage to ${target.name}`);
+battle.on('Damage_Dealt', (moveCxt, damageDealt) => {
+  console.log(`(Damage_Dealt): ${moveCxt.user.name} did ${damageDealt} damage to ${moveCxt.target.name} with ${moveCxt.name}`);
 });
 battle.on('Start_Phase_Start', () => {
   console.log(`___(Start_Phase_Start): Turn ${battle.turn}___`);

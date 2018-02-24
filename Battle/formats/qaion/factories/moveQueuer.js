@@ -1,4 +1,4 @@
-const getMoveInfo = require('../pure-functions/getMoveInfo.js');
+const getMoveInfo = require('../pure-functions/movesCSV.js');
 const moveFactory = require('./move.js');
 
 const moveQueuerFactory = (battle, user) => {

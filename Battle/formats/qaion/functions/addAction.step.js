@@ -1,5 +1,9 @@
-const moveFactory = (cxt) => {
+module.exports = (cxt, opt = {}) => {
 
+  cxt.battle.addAction(action);
+};
+
+/*
   const move = () => {
     if (cxt.user.HP <= 0) { return null; }
 
@@ -18,8 +22,5 @@ const moveFactory = (cxt) => {
   move.phase = cxt.phase;
   move.priority = cxt.priority;
   move.remove = (cxt.remove) ? cxt.remove : () => true;
-
-  return move;
-};
-
-module.exports = moveFactory;
+  const move = moveFactory(cxt);
+*/

@@ -25,6 +25,7 @@ module.exports = class Stats {
       ) / 10
     );
     this.HP    = this.maxHP;
+    this.SD    = 1; // obviously update once you know the formula
     this.vAtk  = calcStat(base.baseAtk, lvl); // vanilla Atk
     this.vSAtk = calcStat(base.baseSAtk, lvl);
     this.vSpd  = calcStat(base.baseSpd, lvl);

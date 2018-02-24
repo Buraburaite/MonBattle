@@ -6,7 +6,7 @@ module.exports = num => {
       num: 'D-366B',
       rank: 'R',
       types: ['FR', 'DG'],
-      moves: ['Pyro Sphere', 'Growl'],
+      moves: ['Pyro Sphere', 'Dragon Rage'],
       baseHP: 45,
       baseAtk: 83,
       baseSAtk: 83,

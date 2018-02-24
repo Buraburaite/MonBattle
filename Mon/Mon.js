@@ -27,6 +27,7 @@ class Mon {
   get spd()   { return this._stats.spd; }
   get sDef()  { return this._stats.sDef; }
   get def()   { return this._stats.def; }
+  get SD()    { return this._stats.SD; }
 
 }
 

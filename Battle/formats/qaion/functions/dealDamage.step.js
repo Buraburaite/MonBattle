@@ -11,7 +11,7 @@ module.exports = (cxt, opt = {}) => {
   damage = (opt.value) ? opt.value : calcDamage(cxt);
 
   target.HP -= damage;
-  battle.emit('Damage_Dealt', user, target, damage);
+  battle.emit('Damage_Dealt', cxt, damage);
   if (target.HP <= 0) { battle.emit('Mon_Fainted', target); }
   return null;
 };
