@@ -6,7 +6,10 @@ module.exports = (name) => {
       kind: 'special',
       type: 'FR',
       power: 8,
-      priority: 0
+      priority: 0,
+      remove: null,
+      step1:'dealDamage',
+      params1: {}
     };
     case 'Growl':
     return;
@@ -18,7 +21,10 @@ module.exports = (name) => {
       kind: 'special',
       type: 'GH',
       power: 6,
-      priority: 0
+      priority: 0,
+      remove: null,
+      step1:'dealDamage',
+      params1: {}
     };
   }
 };
