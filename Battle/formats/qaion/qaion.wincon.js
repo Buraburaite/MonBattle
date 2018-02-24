@@ -5,6 +5,6 @@ module.exports = mons => {
       return null;
     }
   }
-  
+
   return liveMons[0].player;
 };

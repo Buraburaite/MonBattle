@@ -35,7 +35,7 @@ battle.on('Damage_Dealt', (user, target, damageDealt) => {
   console.log(`(Damage_Dealt): ${user.name} did ${damageDealt} damage to ${target.name}`);
 });
 battle.on('Start_Phase_Start', () => {
-  console.log('(Start_Phase_Start)');
+  console.log(`___(Start_Phase_Start): Turn ${battle.turn}___`);
 });
 battle.on('Move_Phase_Start', () => {
   console.log('(Move_Phase_Start)');

@@ -1,18 +1,18 @@
 const moveFactory = (cxt) => {
 
   const move = () => {
-    if (user.HP <= 0) { return null; }
+    if (cxt.user.HP <= 0) { return null; }
 
     let n = 1;
-    while (cxt['step' + 1]) {
+    while (cxt['step' + n]) {
       const step = require(`../functions/${cxt["step" + n]}.js`);
 
       step(cxt, cxt['params' + n]);
+      n++;
     }
   };
 
   move.isMove = true;
-  move.cxt = cxt;
   move.user = cxt.user;
   move.target = cxt.target;
   move.phase = 'Move';
@@ -21,3 +21,5 @@ const moveFactory = (cxt) => {
 
   return move;
 };
+
+module.exports = moveFactory;
