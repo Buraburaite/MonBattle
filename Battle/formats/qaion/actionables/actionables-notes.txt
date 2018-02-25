@@ -5,4 +5,4 @@ Moves are just starting-point actions that may trigger other actions or Listener
 Actionables are functions in the actionables folder, which may be used to compose actions and listeners
 
 
-Actionables all have exactly these parameters: (cxt, opt = {})
+Actionables all have exactly these parameters: (cxt, params = {})

@@ -20,7 +20,7 @@ module.exports = num => {
       num: 'P-396A',
       rank: 'R',
       types: ['FR'],
-      moves: ['Will-o-Wisp', 'Hex', 'Pyro Sphere'],
+      moves: ['Will-o-Wisp', 'Hex', 'Fake Pyro Sphere'],
       baseHP: 38,
       baseAtk: 41,
       baseSAtk: 50,

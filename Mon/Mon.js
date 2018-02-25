@@ -16,6 +16,7 @@ class Mon {
     }
 
     this._stats = new Stats(this._base, lvl);
+    this.ailment = 'Something';
   }
 
   get moves() { return this._base.moves; }

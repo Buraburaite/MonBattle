@@ -1,4 +1,4 @@
-module.exports = (cxt, opt = {}) => {
+module.exports = (cxt, params = {}) => {
 
   cxt.battle.addAction(action);
 };

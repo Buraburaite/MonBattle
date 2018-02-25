@@ -1,6 +1,6 @@
 const calcDamage = require('../functions/calcDamage.js');
 
-module.exports = (cxt, opt = {}) => {
+module.exports = (cxt, params = {}) => {
 
   const user = cxt.user;
   const target = cxt.target;
@@ -8,7 +8,7 @@ module.exports = (cxt, opt = {}) => {
 
   let damage;
 
-  damage = (opt.value) ? opt.value : calcDamage(cxt);
+  damage = (params.value) ? params.value : calcDamage(cxt);
 
   target.HP -= damage;
   battle.emit('Damage_Dealt', cxt, damage);
