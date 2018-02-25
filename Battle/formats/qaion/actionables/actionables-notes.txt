@@ -1,0 +1,8 @@
+Actions are anything that can go in battle._actions
+Listeners are anything that can go battle._listeners
+Lines in the csv are either actions or listeners, some are also moves though
+Moves are just starting-point actions that may trigger other actions or Listeners
+Actionables are functions in the actionables folder, which may be used to compose actions and listeners
+
+
+Actionables all have exactly these parameters: (cxt, opt = {})

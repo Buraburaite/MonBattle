@@ -5,7 +5,7 @@ const moveFactory = (cxt) => {
 
     let n = 1;
     while (cxt['step' + n]) {
-      const step = require(`../functions/${cxt["step" + n]}.step.js`);
+      const step = require(`../actionables/${cxt["step" + n]}.js`);
 
       step(cxt, cxt['params' + n]);
       n++;

@@ -1,4 +1,4 @@
-const calcDamage = require('./calcDamage.js');
+const calcDamage = require('../functions/calcDamage.js');
 
 module.exports = (cxt, opt = {}) => {
 

@@ -1,4 +1,4 @@
-name,kind,type,power,phase,priority,remove,step,parameters,step,parameters,step,parameters,step,parameters,step,parameters
+name,kind,type,power,phase,priority,remove,step1,params1,step2,params2,step3,params3,step4,params4,step5,params5
 Pyro Sphere,special,FR,8,,,,dealDamage,,,,,,,,,
 Hex,special,GH,6,,,,dealDamage,,,,,,,,,
 Dragon Rage,special,DG,,,,,dealDamage,4,,,,,,,,
@@ -16,7 +16,7 @@ Dig_vulnerableTo,,,,,,,onMoveInit,us,ifAny,"{ hasFlag: ['hitsDig', 'hitsInvulner
 Metronome Punch,physical,NR,() => { const power = user.battleState.metronomePunch.power; return power ? power : 4; },,,,dealDamage,,call,() => { const state = user.battleState; state.power = (state.lastTurnActivated - battle.turn === 1) ? state.power +2 : 4; state.lastTurnActivated = battle.turn; },,,,,,
 Light Screen,status,LT,,,,,addListener,Light Screen_shield,addListener,Light Screen_shield,,,,,,
 Light Screen_shield,,,,,,() => turnsPassed() >= 3,onMoveInit,team,if,{ isOfKind: 'special' },multiplyDamageBy,0.5,,,,
-,,,,,,,onMoveEnd,team,if,{ hasFlag: 'breaksBarriers' },removeListener,Light Screen_shield,,,,
+---,,,,,,,onMoveEnd,team,if,{ hasFlag: 'breaksBarriers' },removeListener,Light Screen_shield,,,,
 Hypnosis,status,PY,,,,,sleep,{ chance: 0.5 },,,,,,,,
 Sleep Talk,status,NR,,,,,triggerAction,() => randomUserMove({ excluding: 'Sleep Talk' }).action(),,,,,,,,
 Destiny Bond,status,PY,,,,,addListener,Destiny Bond_reaper,updateControl,"{ name: 'Destiny Bond_reaper', reaperTarget: target }",,,,,,
