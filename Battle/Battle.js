@@ -26,6 +26,7 @@ class Battle {
     this._listeners = [];
     this._nextActionID = 0;
     this._nextListenerID = 0;
+    this.getMoveInfo = require('./formats/qaion/pure-functions/getMoveInfo.js');
 
     this.emit('Battle_Start');
   }

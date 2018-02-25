@@ -15,10 +15,6 @@ const durkee = {
 
 const battle = new Battle('qaion', [javi.party, durkee.party]);
 
-battle.on('Mon_Fainted', (mon) => {
-  console.log(`(Mon_Fainted): ${mon.name} has fainted!`);
-});
-
 battle.on('Battle_Start', () => {
   console.log('(Battle_Start)');
 });
@@ -45,6 +41,10 @@ battle.on('End_Phase_Start', () => {
 });
 battle.on('Battle_End', (victor) => {
   console.log(`(Battle_End): ${victor} has won the battle`);
+});
+
+battle.on('Mon_Fainted', (mon) => {
+  console.log(`(Mon_Fainted): ${mon.name} has fainted!`);
 });
 
 battle.start();

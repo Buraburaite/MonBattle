@@ -1,13 +1,4 @@
-const decideVictor = require('./qaion.wincon.js');
-
-const endEnd = (battle) => {
-  const victor = decideVictor(battle.mons);
-  if (victor) {
-    battle.emit('Battle_End', victor);
-    battle.pause();
-    return null;
-  }
-
+const endEnd = (battle) => { // this should be moved to triggerNext
   battle._incrementTurn();
 };
 

@@ -1,4 +1,5 @@
 const calcDamage = require('../functions/calcDamage.js');
+const findVictor = require('../qaion.findVictor.js');
 
 module.exports = (cxt, params = {}) => {
 
@@ -12,6 +13,13 @@ module.exports = (cxt, params = {}) => {
 
   target.HP -= damage;
   battle.emit('Damage_Dealt', cxt, damage);
-  if (target.HP <= 0) { battle.emit('Mon_Fainted', target); }
-  return null;
+  if (target.HP <= 0) {
+    battle.emit('Mon_Fainted', target);
+
+    const victor = findVictor(battle.mons);
+    if (victor) {
+      battle.pause();
+      battle.emit('Battle_End', victor);
+    }
+  }
 };

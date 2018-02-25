@@ -11,6 +11,7 @@ module.exports = (cxt) => {
     def = target.sDef;
   }
 
+  const power = (cxt.powerMult || cxt.powerMult === 0) ? cxt.powerMult*cxt.power : cxt.power;
   const stab = user.types.includes(cxt.type) ? 1.5 : 1;
 
   return Math.round(
@@ -21,7 +22,7 @@ module.exports = (cxt) => {
             (
               (2 * user.lvl) / 5
             ) + 2
-          ) * cxt.power * atk/def
+          ) * power * atk/def
         ) / 50
       ) + 2 * stab,
       target.HP

@@ -1,5 +1,7 @@
 module.exports = (cxt, params = {}) => {
 
+  const action = require(`./${params.actionable}.js`);
+
   cxt.battle.addAction(action);
 };
 
