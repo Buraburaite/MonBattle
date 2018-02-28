@@ -5,7 +5,7 @@ csv = require('papaparse').parse(csv, {
 });
 
 const parse = (v) => {
-  if (typeof(v) === 'string' && v[0] === '{') {
+  if (typeof(v) === 'string' && ['[', '{'].includes(v[0])) {
     return JSON.parse(v);
   } else { return { value: v }; }
 };

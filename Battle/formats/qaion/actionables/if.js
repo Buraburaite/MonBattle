@@ -1,16 +1,11 @@
 module.exports = (cxt, params = {}) => {
-  let stop = false;
+  let stop = true;
 
-  if (params.hasAilment) {
-    let ailment = params.hasAilment;
-    if (
-      (ailment === true && cxt.target.ailment) ||
-      (typeof(ailment) === 'string' && cxt.target.ailment === ailment)
-    ) {
-      stop = true;
-    }
-
+  switch(params.value) {
+    case 'targetHasAilment':
+    if (cxt.target.ailment) { stop = false; }
+    return;
   }
 
-  if (stop) { cxt.stopStepping = true; }
+  if (stop) { cxt.stopStepping = false; }
 };

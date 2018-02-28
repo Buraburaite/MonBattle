@@ -12,7 +12,7 @@ class Mon {
 
     if (opt) {
       if (opt.catchable) { this.catchable = true; }
-      if (opt.nickname)  { this.name  = opt.nickname; }
+      if (opt.nickname)  { this.name = opt.nickname; }
     }
 
     this._stats = new Stats(this._base, lvl);
