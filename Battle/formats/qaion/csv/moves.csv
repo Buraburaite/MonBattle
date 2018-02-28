@@ -1,8 +1,7 @@
 name,kind,type,power,phase,priority,remove,flags,step1,params1,step2,params2,step3,params3,step4,params4,step5,params5
 Pyro Sphere,special,FR,8,,,,,dealDamage,,,,,,,,,
 Fake Pyro Sphere,special,FR,100,,,,,dealDamage,,,,,,,,,
-Hex,special,GH,6,,,,,if,targetHasAilment,modPower,2,,,,,,
-Hex*damage,special,GH,6,,,,,dealDamage,,,,,,,,,
+Hex,special,GH,6,,,,,if,targetHasAilment,modPower,2,dealDamage,,,,,
 Dragon Rage,special,DG,,,,,,dealDamage,4,,,,,,,,
 Fire Spin,special,FR,4,,,,,addAction,Fire Spin*damage,,,,,,,,
 Fire Spin_damage,,,,End,,turnsPassed3,,onEndPhase,,dealDamage,targetSD,,,,,,

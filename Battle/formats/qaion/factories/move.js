@@ -8,7 +8,7 @@ const moveFactory = (cxt) => {
       const step = require(`../actionables/${cxt["step" + n]}.js`);
 
       step(cxt, cxt['params' + n]);
-      if (cxt.stopStepping) { break; }
+      if (cxt.skipNext) { n++; }
       n++;
     }
   };
